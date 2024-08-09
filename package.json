@@ -1,0 +1,11 @@
+{
+  "name": "data-analyzer",
+  "version": "1.0.0",
+  "description": "NodeJs Module to analyze poc's results in data folder ",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Benjamin Keller",
+  "license": "ISC"
+}
