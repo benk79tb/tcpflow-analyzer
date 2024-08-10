@@ -1,0 +1,9 @@
+POST / HTTP/1.1
+Host: witness_1:5631
+Accept-Encoding: identity
+Content-Type: application/cesr+json
+Content-Length: 354
+Connection: close
+Cesr-Attachment: -VAj-HABEHjH8UK6mjMod2qrMMpUbbVjZPetdqROgFY2ESNMs_4g-AABAAA4Bt4jGpkbpQO5mZokIvTCKYVxX1LiVH8u0AWLKctAINbxMGF-tFgARA-_3__hyBxrM7_u9OrZXlrRIAekKKgH
+
+{"v":"KERI10JSON000162_","t":"qry","d":"EHeD_wWKd_APTZoxEeqGkn_2hIAIZlkrkDVjZBakpnbY","dt":"2024-08-09T12:50:12.634118+00:00","r":"mbx","rr":"","q":{"pre":"EHjH8UK6mjMod2qrMMpUbbVjZPetdqROgFY2ESNMs_4g","topics":{"/receipt":0,"/replay":0,"/reply":0},"i":"EHjH8UK6mjMod2qrMMpUbbVjZPetdqROgFY2ESNMs_4g","src":"BBilc4-L3tFUnfM_wJr4S4OJanAv_VmF_dJNN6vkf2Ha"}}

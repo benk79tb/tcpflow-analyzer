@@ -1,0 +1,54 @@
+HTTP/1.1 200 OK
+Cache-Control: no-cache
+Connection: close
+Content-Type: text/event-stream
+Server: Ioflo WSGI Server
+Date: Fri, 09 Aug 2024 12:50:56 GMT
+Transfer-Encoding: chunked
+
+d
+retry: 5000
+
+
+313
+id: 0
+event: /credential
+retry: 5000
+data: {"v":"KERI10JSON00013a_","t":"ixn","d":"EMOlAe-4r0hGoS5CRa1zGGN7ZTWvEzpTSIvKN8oCTAp4","i":"ELQj3pLUOtqUqQ23dugDq6m0S8bDtlSCFi1c7YgNO2Xa","s":"1","p":"ELQj3pLUOtqUqQ23dugDq6m0S8bDtlSCFi1c7YgNO2Xa","a":[{"i":"EJWwDAJg9hEXO9Iu55juySJzzLFe1-yzcGEfY_U04nxR","s":"0","d":"EJWwDAJg9hEXO9Iu55juySJzzLFe1-yzcGEfY_U04nxR"}]}-VBq-AABAACjMFwCXZNqVXIrZY8yVtzuh1q32EUQ9zWg8imNHbFctv1FmDG4aocmQzH1WYmp8GtfXjav8yUfvlewM0yenRAB-BADAABQU6uhG1KAwumiOlcyUat8a3NA6pofIyqTnRxv9YMZxuX6k9NlIcgl5D7O9AhYPZKda9WyVpNN2k0YLZqTHn4PABDlA5VSNJLRXm6b6QIZJwlf4o0FWk5JOP5rNy_UNatrmv_iPNpYrjBd8T5ST_EKUqjIs9rr_jM6SYRqj29S54wNACB_TyokQbqJsU1InUYrowV1pzhvhcduNyuXOltx9RPQ6LULiRrcIJKdaGvS_UkvBk_kxtczjfoPXB-teKxJZyoF-EAB0AAAAAAAAAAAAAAAAAAAAAAB1AAG2024-08-09T12c50c46d378474p00c00
+
+
+390
+id: 1
+event: /credential
+retry: 5000
+data: {"v":"KERI10JSON0001b7_","t":"icp","d":"EDNXuFAHVqxbFRdQpatx6WJz6jLYPiQoH8Fn5AA1UcVO","i":"EDNXuFAHVqxbFRdQpatx6WJz6jLYPiQoH8Fn5AA1UcVO","s":"0","kt":"1","k":["DEYyk7n1cSp_V72sycGv42nBz4ffU4Ipr9n1syqJ5WM9"],"nt":"1","n":["EBIx1wp-2rYtiCNsDOBzCkogIiFjxsyc6y2icbA29BN4"],"bt":"3","b":["BBilc4-L3tFUnfM_wJr4S4OJanAv_VmF_dJNN6vkf2Ha","BA5Vo4mWJWz4ou3lFqerCUNjwzPcg8my4cSumFAN062w","BFyAAOjUcvCJ4Kwz7IP6Ws8ryV5kCjBdI_nKzoHRP98M"],"c":[],"a":[]}-VBq-AABAAChng5RAwzS575BCKKm60rYmSkqRj9slHprRmmrkXu76N2JoiPcEWiG3rLAVHaohkMBlUl1FbCPMCOv_Pb7pWQN-BADAAB3cIlaaM9lo8LlTTU1UNSRuolHGdcVFuvQUFJs7Plxgja8mkEr-IxsshB71B0azVWPV0mxV3L6eQJnfeWLaDMPABDWm3By3seTqQF_OB3-5NuQHT6M95HqzO7QzRkVvNSfW4YVp6_LSeUx5LmKrgUNL5tkt-hkNrb_qxxwLlzj8EALACByKxCEpEcG7r0pG6_49Gueyb5iR5v5fYtMBUYJC7ftmocx9laAwIopwEy8r9dbYVqwUkKKZiBC4N39g4DCI2wB-EAB0AAAAAAAAAAAAAAAAAAAAAAA1AAG2024-08-09T12c50c11d926909p00c00
+
+
+313
+id: 2
+event: /credential
+retry: 5000
+data: {"v":"KERI10JSON00013a_","t":"ixn","d":"EPH-DRhcB0OHbAXLoAQE4-LM9koy3_IpeybIws4n3ydZ","i":"EDNXuFAHVqxbFRdQpatx6WJz6jLYPiQoH8Fn5AA1UcVO","s":"1","p":"EDNXuFAHVqxbFRdQpatx6WJz6jLYPiQoH8Fn5AA1UcVO","a":[{"i":"ENIEQy2BcW8qJJyKv5jFoktMr5l4odX22MXXeapPPL94","s":"0","d":"ENIEQy2BcW8qJJyKv5jFoktMr5l4odX22MXXeapPPL94"}]}-VBq-AABAABW260_HeytFf4n3GGTyqsVfhYRhiBOR_7iGmvXjGyfm7j2m7o5XdD7mE0YIlWQtn6sf-6Sr35FzEcoq9kEI68P-BADAACXNqdVmAOiKI7kf2FJO5ry-Q_byDW1vU9z0H4myACCvtnYqOKu0pSquQCFtXfkTfOnDYmckALoirskkzg0Ja0PABDfoDjgjD_EtyBClGgcU31ueGIHDUUgaJcvKExerXE9bMA3EYLJjJVztIFy0eW2qwdejrfjIVeLNLpv9_KKDYkEACD2JyzqDHeZ2kAg1BAupjHIJFX8ZKgh0ukVAwDAPghkE50F7x31oRveX2vv0zQkkHMlmfY_rMCvMUps_D3Gbv4I-EAB0AAAAAAAAAAAAAAAAAAAAAAB1AAG2024-08-09T12c50c16d281916p00c00
+
+
+166
+id: 3
+event: /credential
+retry: 5000
+data: {"v":"KERI10JSON0000ed_","t":"iss","d":"ECtZ8c6WVehca_N-iw51r8uN_7Gwt8qzWqNcnMh84bCT","i":"EKOZXcO0Uf5gIodXVjyxjPNIcsP3aCoEtgy5hzMtefZw","s":"0","ri":"EJWwDAJg9hEXO9Iu55juySJzzLFe1-yzcGEfY_U04nxR","dt":"2024-08-09T12:50:35.736442+00:00"}-VAS-GAB0AAAAAAAAAAAAAAAAAAAAAACEK6cl3tOf3FRbsdWfxICPGzx4nn4YEUnsXIWogmmXZLH
+
+
+30d
+id: 4
+event: /credential
+retry: 5000
+data: {"v":"ACDC10JSON000204_","d":"EKOZXcO0Uf5gIodXVjyxjPNIcsP3aCoEtgy5hzMtefZw","i":"ELQj3pLUOtqUqQ23dugDq6m0S8bDtlSCFi1c7YgNO2Xa","ri":"EJWwDAJg9hEXO9Iu55juySJzzLFe1-yzcGEfY_U04nxR","s":"EEYMNgyQNHWrsO4m65Px84M93o2url6aUpTFqNdMZdKt","a":{"d":"EDzR4RVKK5trSiYH2wNA4onXGUrzTlwpRRZui9JR2wsO","i":"EDNXuFAHVqxbFRdQpatx6WJz6jLYPiQoH8Fn5AA1UcVO","dt":"2024-08-09T12:50:35.736442+00:00","firstName":"Benjamin","lastName":"Keller","birthDate":19790629,"height":171,"sex":"M","origin":"ZH","authority":"Sion","expiry":20290629}}-JAB6AABAAA--FABELQj3pLUOtqUqQ23dugDq6m0S8bDtlSCFi1c7YgNO2Xa0AAAAAAAAAAAAAAAAAAAAAAAELQj3pLUOtqUqQ23dugDq6m0S8bDtlSCFi1c7YgNO2Xa-AABAADnCylss5GaXi6bLbdEFCqOeKWVFlRosZwXk73frOfKYuIZaAwUc9nfeknRKHws_3-aQz3s0uwBXFOBLDue1CsA
+
+
+313
+id: 5
+event: /credential
+retry: 5000
+data: {"v":"KERI10JSON00013a_","t":"ixn","d":"EPH-DRhcB0OHbAXLoAQE4-LM9koy3_IpeybIws4n3ydZ","i":"EDNXuFAHVqxbFRdQpatx6WJz6jLYPiQoH8Fn5AA1UcVO","s":"1","p":"EDNXuFAHVqxbFRdQpatx6WJz6jLYPiQoH8Fn5AA1UcVO","a":[{"i":"ENIEQy2BcW8qJJyKv5jFoktMr5l4odX22MXXeapPPL94","s":"0","d":"ENIEQy2BcW8qJJyKv5jFoktMr5l4odX22MXXeapPPL94"}]}-VBq-AABAABW260_HeytFf4n3GGTyqsVfhYRhiBOR_7iGmvXjGyfm7j2m7o5XdD7mE0YIlWQtn6sf-6Sr35FzEcoq9kEI68P-BADAACXNqdVmAOiKI7kf2FJO5ry-Q_byDW1vU9z0H4myACCvtnYqOKu0pSquQCFtXfkTfOnDYmckALoirskkzg0Ja0PABDfoDjgjD_EtyBClGgcU31ueGIHDUUgaJcvKExerXE9bMA3EYLJjJVztIFy0eW2qwdejrfjIVeLNLpv9_KKDYkEACD2JyzqDHeZ2kAg1BAupjHIJFX8ZKgh0ukVAwDAPghkE50F7x31oRveX2vv0zQkkHMlmfY_rMCvMUps_D3Gbv4I-EAB0AAAAAAAAAAAAAAAAAAAAAAB1AAG2024-08-09T12c50c16d281916p00c00
+
+

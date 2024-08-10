@@ -1,0 +1,2 @@
+reportfilename: /var/log/tcpflow/report.xml
+tcpflow: listening on eth0

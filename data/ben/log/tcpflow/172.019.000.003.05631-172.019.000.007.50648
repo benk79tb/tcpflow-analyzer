@@ -1,0 +1,8 @@
+HTTP/1.1 200 OK
+Keri-Aid: BA5Vo4mWJWz4ou3lFqerCUNjwzPcg8my4cSumFAN062w
+Content-Type: application/json+cesr
+Content-Length: 1196
+Server: Ioflo WSGI Server
+Date: Fri, 09 Aug 2024 12:50:07 GMT
+
+{"v":"KERI10JSON0000fa_","t":"rpy","d":"EHgIVfa1_k9bXLRMrlfElqc7bnAn83QzaPnG4rcbSW6Z","dt":"2024-08-09T12:50:07.547923+00:00","r":"/loc/scheme","a":{"eid":"BA5Vo4mWJWz4ou3lFqerCUNjwzPcg8my4cSumFAN062w","scheme":"http","url":"http://witness_2:5631/"}}-VAi-CABBA5Vo4mWJWz4ou3lFqerCUNjwzPcg8my4cSumFAN062w0BAIZyXk9-L1080PxGHfl_K75vrZv_ogHPCIhBNnIS1xHVGlrYtfy9REk2KlZPjPOpDqLyYi-bYci5qPEBFNQaAA{"v":"KERI10JSON0000f8_","t":"rpy","d":"EEPFV0K5RW22ELEc4AbKkyJzowOYl8JsDxIyLYzng66v","dt":"2024-08-09T12:50:07.549271+00:00","r":"/loc/scheme","a":{"eid":"BA5Vo4mWJWz4ou3lFqerCUNjwzPcg8my4cSumFAN062w","scheme":"tcp","url":"tcp://witness_2:5632/"}}-VAi-CABBA5Vo4mWJWz4ou3lFqerCUNjwzPcg8my4cSumFAN062w0BCDYEDIEJyWQEleIBlfBkgbxGcU5tGPhDkMhe0jZAUd2KbHfIqwzIzVTsp_n0e08AT4jzcmhr983fmMgsFKcjQE{"v":"KERI10JSON000116_","t":"rpy","d":"EJT9N_n4aPY48e0xrnsoXdFAHoq71GlMn43O-ZOPv9Fd","dt":"2024-08-09T12:50:07.550282+00:00","r":"/end/role/add","a":{"cid":"BA5Vo4mWJWz4ou3lFqerCUNjwzPcg8my4cSumFAN062w","role":"controller","eid":"BA5Vo4mWJWz4ou3lFqerCUNjwzPcg8my4cSumFAN062w"}}-VAi-CABBA5Vo4mWJWz4ou3lFqerCUNjwzPcg8my4cSumFAN062w0BDTDXpGilYWf0tbs3I2np9YtJqVsLd39aRhAwi8EgBSl5v3Mad2oIYd2_e06a6yp0yoxd_-tpGRjtwawT0kRyoB

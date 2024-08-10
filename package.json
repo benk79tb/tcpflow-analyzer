@@ -9,6 +9,9 @@
   "author": "Benjamin Keller",
   "license": "ISC",
   "dependencies": {
+    "htmlparser2": "^9.1.0",
+    "js-sequence-diagrams": "^0.0.1-security",
+    "mermaid": "^10.9.1",
     "nomnoml": "^1.6.2"
   }
 }

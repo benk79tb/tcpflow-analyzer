@@ -18,7 +18,7 @@ fs.readdir(dataFolder, (err, files) => {
     });
 
     actorsFolders.forEach(actorFolder => {
-        let tcpflowFolder = actorFolder + '/tcpflow';
+        let tcpflowFolder = actorFolder + '/log/tcpflow';
 
         if (fs.statSync(tcpflowFolder).isDirectory()) {
             fs.readdir(tcpflowFolder, (err, files) => {
@@ -28,7 +28,7 @@ fs.readdir(dataFolder, (err, files) => {
                 }
                 files.forEach(file => {
 
-                    console.log(file);
+                    // console.log(file);
 
                     if (file === 'report.xml') {
                         let filePath = path.join(tcpflowFolder, file);

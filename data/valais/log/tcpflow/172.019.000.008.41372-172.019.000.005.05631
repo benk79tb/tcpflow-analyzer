@@ -1,0 +1,8 @@
+POST / HTTP/1.1
+Host: witness_1:5631
+Accept-Encoding: identity
+Content-Type: application/cesr+json
+Content-Length: 738
+Cesr-Attachment: -HABELQj3pLUOtqUqQ23dugDq6m0S8bDtlSCFi1c7YgNO2Xa-AABAABbNotuXRIPlBzZr-DrnUMmg6V_Nk9dKhhgZHHzLl7p6uTcBbj_JN6tOl-NFIVE2W7AwqschXPAzMFFlJiopboN-LA55AABAA-a-JAB6AABAAA--FABELQj3pLUOtqUqQ23dugDq6m0S8bDtlSCFi1c7YgNO2Xa0AAAAAAAAAAAAAAAAAAAAAAAELQj3pLUOtqUqQ23dugDq6m0S8bDtlSCFi1c7YgNO2Xa-AABAADnCylss5GaXi6bLbdEFCqOeKWVFlRosZwXk73frOfKYuIZaAwUc9nfeknRKHws_3-aQz3s0uwBXFOBLDue1CsA
+
+{"v":"KERI10JSON0002e2_","t":"exn","d":"EF0pE19h7PyG1aHlmcvnzl3fA1Ao3dXAHRao9l4JYvcn","dt":"2024-08-09T12:50:38.633128+00:00","r":"/fwd","q":{"pre":"EDNXuFAHVqxbFRdQpatx6WJz6jLYPiQoH8Fn5AA1UcVO","topic":"credential"},"a":{"v":"ACDC10JSON000204_","d":"EKOZXcO0Uf5gIodXVjyxjPNIcsP3aCoEtgy5hzMtefZw","i":"ELQj3pLUOtqUqQ23dugDq6m0S8bDtlSCFi1c7YgNO2Xa","ri":"EJWwDAJg9hEXO9Iu55juySJzzLFe1-yzcGEfY_U04nxR","s":"EEYMNgyQNHWrsO4m65Px84M93o2url6aUpTFqNdMZdKt","a":{"d":"EDzR4RVKK5trSiYH2wNA4onXGUrzTlwpRRZui9JR2wsO","i":"EDNXuFAHVqxbFRdQpatx6WJz6jLYPiQoH8Fn5AA1UcVO","dt":"2024-08-09T12:50:35.736442+00:00","firstName":"Benjamin","lastName":"Keller","birthDate":19790629,"height":171,"sex":"M","origin":"ZH","authority":"Sion","expiry":20290629}}}

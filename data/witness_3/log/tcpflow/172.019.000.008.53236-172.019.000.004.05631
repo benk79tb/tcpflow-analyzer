@@ -1,0 +1,15 @@
+POST / HTTP/1.1
+Host: witness_3:5631
+Accept-Encoding: identity
+Content-Type: application/cesr+json
+Content-Length: 314
+Cesr-Attachment: -AABAACYbVXcT-Nu02roS-sjVIApgg6RNxs-dKKAe3DkEY-YLk4Qpn_8Fn6lJDHgS3QJJBFBOec2JOBddTogWfoTp_UG
+
+{"v":"KERI10JSON00013a_","t":"ixn","d":"EK6cl3tOf3FRbsdWfxICPGzx4nn4YEUnsXIWogmmXZLH","i":"ELQj3pLUOtqUqQ23dugDq6m0S8bDtlSCFi1c7YgNO2Xa","s":"2","p":"EMOlAe-4r0hGoS5CRa1zGGN7ZTWvEzpTSIvKN8oCTAp4","a":[{"i":"EKOZXcO0Uf5gIodXVjyxjPNIcsP3aCoEtgy5hzMtefZw","s":"0","d":"ECtZ8c6WVehca_N-iw51r8uN_7Gwt8qzWqNcnMh84bCT"}]}POST / HTTP/1.1
+Host: witness_3:5631
+Accept-Encoding: identity
+Content-Type: application/cesr+json
+Content-Length: 145
+Cesr-Attachment: -BACAAB57O_RAz6FqN6Bs1wBpzjXpG_AWW3hxmylviP3f1zqVtwewu3i-pIe3RjtpBWxCc320fal5EvtVGe-Yg6-_RsIABCMB8cEkk_VCv2za2IGmS_Wcnb_mtfW6ItCxMimpfreQbqLzek_0mlP3GiI2VGBmNWJyhOmApZk23AG_HvtCosO
+
+{"v":"KERI10JSON000091_","t":"rct","d":"EK6cl3tOf3FRbsdWfxICPGzx4nn4YEUnsXIWogmmXZLH","i":"ELQj3pLUOtqUqQ23dugDq6m0S8bDtlSCFi1c7YgNO2Xa","s":"2"}

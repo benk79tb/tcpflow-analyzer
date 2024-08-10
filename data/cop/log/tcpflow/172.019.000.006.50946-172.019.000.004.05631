@@ -1,0 +1,43 @@
+POST / HTTP/1.1
+Host: witness_3:5631
+Accept-Encoding: identity
+Content-Type: application/cesr+json
+Content-Length: 439
+Cesr-Attachment: -AABAABuQuadQJxEKbaB0fMyodDGAHWzz239PsFUz_MuYjdr-VSf0K04df9I5NMGaLhUJ5hSqzrT0ZED1L-i6FtwkB4I
+
+{"v":"KERI10JSON0001b7_","t":"icp","d":"EHjH8UK6mjMod2qrMMpUbbVjZPetdqROgFY2ESNMs_4g","i":"EHjH8UK6mjMod2qrMMpUbbVjZPetdqROgFY2ESNMs_4g","s":"0","kt":"1","k":["DIhsYf-_neeWtXv6qxu1wFALlqtHlcuyzo4rQth3pzsC"],"nt":"1","n":["EG9JbYufZArqOl9xvaJBR9SlO2bzSNpXDfK4SPfWh9U6"],"bt":"3","b":["BBilc4-L3tFUnfM_wJr4S4OJanAv_VmF_dJNN6vkf2Ha","BA5Vo4mWJWz4ou3lFqerCUNjwzPcg8my4cSumFAN062w","BFyAAOjUcvCJ4Kwz7IP6Ws8ryV5kCjBdI_nKzoHRP98M"],"c":[],"a":[]}POST / HTTP/1.1
+Host: witness_3:5631
+Accept-Encoding: identity
+Content-Type: application/cesr+json
+Content-Length: 248
+Cesr-Attachment: -VAi-CABBBilc4-L3tFUnfM_wJr4S4OJanAv_VmF_dJNN6vkf2Ha0BB1_duQHBfZs_wuKDXpnETCJeZxA1PIs8x0SrpWNThzRLun_bT4f_JhUpB0Jbj6ydaZ1oBtK07v8DMnrzOqngQD
+
+{"v":"KERI10JSON0000f8_","t":"rpy","d":"EDA9D07vgiP7NZFpEBsJp933zPWrcWtkk7JIeV04vNp8","dt":"2024-08-09T12:50:08.018242+00:00","r":"/loc/scheme","a":{"eid":"BBilc4-L3tFUnfM_wJr4S4OJanAv_VmF_dJNN6vkf2Ha","scheme":"tcp","url":"tcp://witness_1:5632/"}}POST / HTTP/1.1
+Host: witness_3:5631
+Accept-Encoding: identity
+Content-Type: application/cesr+json
+Content-Length: 250
+Cesr-Attachment: -VAi-CABBBilc4-L3tFUnfM_wJr4S4OJanAv_VmF_dJNN6vkf2Ha0BAIgbbgxhr34t434dhad_FFLOQ4CCYDM11xGkMlOuWckr459f4iC13_3FZZjJXTHqF-Z78eTzzGIW2gw2apDSMD
+
+{"v":"KERI10JSON0000fa_","t":"rpy","d":"EH-qZ7RMCswfh26FR0KSHDF6PxHb5ic-RR9ahEBnC7m7","dt":"2024-08-09T12:50:08.016872+00:00","r":"/loc/scheme","a":{"eid":"BBilc4-L3tFUnfM_wJr4S4OJanAv_VmF_dJNN6vkf2Ha","scheme":"http","url":"http://witness_1:5631/"}}POST / HTTP/1.1
+Host: witness_3:5631
+Accept-Encoding: identity
+Content-Type: application/cesr+json
+Content-Length: 248
+Cesr-Attachment: -VAi-CABBA5Vo4mWJWz4ou3lFqerCUNjwzPcg8my4cSumFAN062w0BC6MQhHdUzHhK3ZM19UxxQl2i46qvBXI9RKvB0pMhlXMhzaworEmiGV7bneA_UwachE_UTzuFYb3Su2iD0ZJSAG
+
+{"v":"KERI10JSON0000f8_","t":"rpy","d":"EJ2eo2weFjpVhinVPfks2Lz3l2ICZLouqrlNnzlF6YGL","dt":"2024-08-09T12:50:07.996534+00:00","r":"/loc/scheme","a":{"eid":"BA5Vo4mWJWz4ou3lFqerCUNjwzPcg8my4cSumFAN062w","scheme":"tcp","url":"tcp://witness_2:5632/"}}POST / HTTP/1.1
+Host: witness_3:5631
+Accept-Encoding: identity
+Content-Type: application/cesr+json
+Content-Length: 250
+Cesr-Attachment: -VAi-CABBA5Vo4mWJWz4ou3lFqerCUNjwzPcg8my4cSumFAN062w0BD6aepNjY5VRP8ud_coAuhmW9j5jNfyyky3XBjaxh8KFPP0krGHj-RNoJo8YF5Wvv4UDnE5TcfHw6vLynRMtV8P
+
+{"v":"KERI10JSON0000fa_","t":"rpy","d":"EM4x6CC0C5Df-W8Z8axyC24wpOpgbyMVpomuboxB83i6","dt":"2024-08-09T12:50:07.995068+00:00","r":"/loc/scheme","a":{"eid":"BA5Vo4mWJWz4ou3lFqerCUNjwzPcg8my4cSumFAN062w","scheme":"http","url":"http://witness_2:5631/"}}POST / HTTP/1.1
+Host: witness_3:5631
+Accept-Encoding: identity
+Content-Type: application/cesr+json
+Content-Length: 145
+Cesr-Attachment: -BACAABSOCZt_WmO1FB1HZhzc0fubWCITVj7640l5b0BHW5URx4hPowpNyZxD0AnuQWa2AjrJSInKxOd1DGWsozf-wYAABAOnvVDRoDxj_5sRk9nx_DftE6NDZWW3s46S84LjDMiEVdTIXTAlZZP3bxZwDByf_2ec6oZ16jDNm6DoVBL_mcB
+
+{"v":"KERI10JSON000091_","t":"rct","d":"EHjH8UK6mjMod2qrMMpUbbVjZPetdqROgFY2ESNMs_4g","i":"EHjH8UK6mjMod2qrMMpUbbVjZPetdqROgFY2ESNMs_4g","s":"0"}

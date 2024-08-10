@@ -1,0 +1,14 @@
+2024-08-09 14:49:16.447853    Data cleaned up
+2024-08-09 14:49:16.523046    Starting docker compose
+2024-08-09 14:50:02.714476    Docker compose started
+2024-08-09 14:50:02.781031    waiting for actors to be ready
+2024-08-09 14:50:26.376888    Actors are ready
+2024-08-09 14:50:31.499900    Issuing credential
+2024-08-09 14:50:39.745535    Credential issued
+2024-08-09 14:50:41.883559    Receiving credential
+2024-08-09 14:50:53.973934    Credential received
+2024-08-09 14:50:56.269246    Presenting credential
+2024-08-09 14:51:03.581925    Credential presented
+2024-08-09 14:51:03.654778    Verifying credential
+2024-08-09 14:51:06.204148    Valid credential b'{"schema": "EEYMNgyQNHWrsO4m65Px84M93o2url6aUpTFqNdMZdKt", "issuer": "ELQj3pLUOtqUqQ23dugDq6m0S8bDtlSCFi1c7YgNO2Xa", "issueTimestamp": "2024-08-09T12:50:35.736442+00:00", "credential": "EKOZXcO0Uf5gIodXVjyxjPNIcsP3aCoEtgy5hzMtefZw", "recipient": "EDNXuFAHVqxbFRdQpatx6WJz6jLYPiQoH8Fn5AA1UcVO", "firstName": "Benjamin", "lastName": "Keller", "birthDate": 19790629, "height": 171, "sex": "M", "origin": "ZH", "authority": "Sion", "expiry": 20290629}'
+2024-08-09 14:51:06.273265    Experience done

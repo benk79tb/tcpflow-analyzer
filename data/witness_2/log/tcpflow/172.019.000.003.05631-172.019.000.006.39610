@@ -1,0 +1,19 @@
+HTTP/1.1 200 OK
+Cache-Control: no-cache
+Connection: close
+Content-Type: text/event-stream
+Server: Ioflo WSGI Server
+Date: Fri, 09 Aug 2024 12:50:17 GMT
+Transfer-Encoding: chunked
+
+d
+retry: 5000
+
+
+143
+id: 1
+event: /receipt
+retry: 5000
+data: {"v":"KERI10JSON000091_","t":"rct","d":"EKt0hV1MR4SZgC_MiS5r4_yRIHZwR37ltZuuk-M37Mhz","i":"EHjH8UK6mjMod2qrMMpUbbVjZPetdqROgFY2ESNMs_4g","s":"1"}-CABBA5Vo4mWJWz4ou3lFqerCUNjwzPcg8my4cSumFAN062w0BBu-wm3_EYhL51j3N9byKLHKXWYewdVy4GwpkrIPHpPSkDJkbB2dcy4-adeUAFkWygZCjfq3Eufmflw1rEirtsC
+
+

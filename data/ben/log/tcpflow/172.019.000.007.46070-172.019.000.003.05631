@@ -1,0 +1,8 @@
+POST / HTTP/1.1
+Host: witness_2:5631
+Accept-Encoding: identity
+Content-Type: application/cesr+json
+Content-Length: 459
+Cesr-Attachment: -HABEDNXuFAHVqxbFRdQpatx6WJz6jLYPiQoH8Fn5AA1UcVO-AABAABuMeQnFoulABt7KPhXln3hsfQPSTfBQLnapYyfA2CbJV1IVqq5nryYGKcIYnKwKdYPqTq0OzJPkS4bpNFRUfkH-LAV5AABAA-a-VAS-GAB0AAAAAAAAAAAAAAAAAAAAAACEK6cl3tOf3FRbsdWfxICPGzx4nn4YEUnsXIWogmmXZLH
+
+{"v":"KERI10JSON0001cb_","t":"exn","d":"EIm6nvS3uWy5bngHMdm_SzJAjsjwDn4IEyXjKYnpxO2j","dt":"2024-08-09T12:51:02.444862+00:00","r":"/fwd","q":{"pre":"EHjH8UK6mjMod2qrMMpUbbVjZPetdqROgFY2ESNMs_4g","topic":"credential"},"a":{"v":"KERI10JSON0000ed_","t":"iss","d":"ECtZ8c6WVehca_N-iw51r8uN_7Gwt8qzWqNcnMh84bCT","i":"EKOZXcO0Uf5gIodXVjyxjPNIcsP3aCoEtgy5hzMtefZw","s":"0","ri":"EJWwDAJg9hEXO9Iu55juySJzzLFe1-yzcGEfY_U04nxR","dt":"2024-08-09T12:50:35.736442+00:00"}}
