@@ -2,7 +2,7 @@ const fs = require('fs');
 const path = require('path');
 
 console.log('Hello World!');
-const dataFolder = '/data';
+const dataFolder = './data';
 fs.readdir(dataFolder, (err, files) => {
     let actorsFolders = [];
     if (err) {
@@ -57,12 +57,6 @@ fs.readdir(dataFolder, (err, files) => {
                                     }
                                     console.log('File saved!');
                                 });
-                                // console.log(xmlEndTag1);
-                                // console.log(xmlEndTag2);
-                                // let timestamp = lastLine.match(/timestamp="([^"]+)"/)[1];
-                                // console.log(timestamp);
-
-                                
                             }
                         });
                     }
