@@ -1,20 +1,93 @@
 const fs = require('fs');
 const path = require('path');
-// const nomnoml = require('nomnoml');
 const htmlparser2 = require('htmlparser2');
 const { exec } = require('child_process');
 
-// const { Diagram, Parser } = require('js-sequence-diagrams');
-// const mermaid = require('mermaid');
-
 console.log('Hello World!');
 const dataFolder = './data';
-fs.readdir(dataFolder, (err, files) => {
-    let actorsFolders = [];
-    if (err) {
-        console.error(err);
-        return;
+
+
+let actors = {};
+let requestResponseExchanges = []
+let logContent = [];
+
+
+loadLog();
+loadActorsAndExchanges();
+
+
+let times = getStepDateTimes('Issuing credential', 'Credential issued');
+
+let issuingExchanges = requestResponseExchanges.filter(exchange => {
+    let actorNames = ['valais', 'witness_1'];
+    return isBetween(times, exchange) && includesActors(actorNames, exchange);
+});
+console.log(times);
+console.log(requestResponseExchanges.length);
+console.log(issuingExchanges.length);
+
+generateUmlDiagram('issue_diagram', issuingExchanges, () => {});
+
+// process.exit(0);
+
+
+
+// generateUmlDiagram('mermaid_diagram', requestResponseExchanges, () => {});
+
+
+function getStepDateTimes(startString, endString) {
+
+    let startLine = logContent.find(line => line.message.includes(startString));
+    let endLine = logContent.find(line => line.message.includes(endString));
+
+    if (!startLine || !endLine) {
+        return null;
     }
+
+    return { start: new Date(`${startLine.date} ${startLine.time}`), end: new Date(`${endLine.date} ${endLine.time}`) };
+
+}
+
+
+function isBetween(times, exchange) {
+    let start = exchange.exchanges[0].startime.getTime();
+    return start >= times.start.getTime() && start <= times.end.getTime();
+}
+
+function includesActors(actorNames, exchange) {
+    let actorsIps = [];
+
+    actorNames.forEach(actor => {
+        let ip = actors[actor];
+        actorsIps.push(ip);
+    });
+
+    console.log(actorsIps);
+    return actorsIps.includes(exchange.exchanges[0].src_ipn) && actorsIps.includes(exchange.exchanges[0].dst_ipn);
+}
+
+function loadLog() {
+    logFilePath = path.join(dataFolder, 'experience.log');
+
+    if (fs.existsSync(logFilePath)) {
+        logLines = fs.readFileSync(logFilePath, 'utf8').split('\n');
+    }
+
+    logContent = logLines.map(line => {
+        let parts = line.split(' ');
+        let date = parts[0];
+        let time = parts[1];
+        let message = parts.slice(2).join(' ');
+        return { date, time, message };
+    });
+}
+
+function loadActorsAndExchanges() {
+
+    let files = fs.readdirSync(dataFolder);
+
+    // fs.readdir(dataFolder, (err, files) => {
+    let actorsFolders = [];
     files.forEach(file => {
         console.log(file);
         let filePath = path.join(dataFolder, file);
@@ -22,8 +95,6 @@ fs.readdir(dataFolder, (err, files) => {
             actorsFolders.push(filePath);
         }
     });
-
-    let actors = {};
 
     actorsFolders.forEach(actorFolder => {
         console.log(actorFolder);
@@ -34,8 +105,6 @@ fs.readdir(dataFolder, (err, files) => {
             actors[actorName] = ip;
         }
     });
-
-    console.log(actors);
 
     let exchanges = [];
 
@@ -104,88 +173,119 @@ fs.readdir(dataFolder, (err, files) => {
         }
     });
 
-    console.log(exchanges.length);
-    console.log(exchanges[0]);
 
-    exchanges.sort((a, b) => {
-        return a.startime - b.startime;
+
+    exchanges.forEach(exchange => {
+
+        let endpoints = []; 
+
+        let src = {
+            ip: exchange.src_ipn,
+            port: exchange.srcport
+        }
+        let dst = {
+            ip: exchange.dst_ipn,
+            port: exchange.dstport
+        }
+
+        function getExistingRequestResponseExchange(exchange) {
+            return requestResponseExchanges.find(ex => {
+                if (ex.endpoints[0].ip === src.ip && ex.endpoints[0].port === src.port && ex.endpoints[1].ip === dst.ip && ex.endpoints[1].port === dst.port ||
+                    ex.endpoints[1].ip === src.ip && ex.endpoints[1].port === src.port && ex.endpoints[0].ip === dst.ip && ex.endpoints[0].port === dst.port) {
+                    return true;
+                }
+                return false;
+            });
+        }
+
+        endpoints.push(src);
+        endpoints.push(dst);
+
+        let requestResponseExchange = getExistingRequestResponseExchange(exchange);
+        if (requestResponseExchange) {
+            requestResponseExchange.exchanges.push(exchange);
+            let exchanges = requestResponseExchange.exchanges.sort((a, b) => {
+                return a.startime - b.startime;
+            });
+            requestResponseExchange.exchanges = exchanges
+        }
+        else {
+            requestResponseExchange = {
+                endpoints: endpoints,
+                exchanges: [exchange]
+            }
+            requestResponseExchanges.push(requestResponseExchange);
+        }
     });
-    generateUmlDiagram();
 
+
+    requestResponseExchanges.sort((a, b) => {
+        return a.exchanges[0].startime - b.exchanges[0].startime;
+    });
+    // });
     
-    async function generateUmlDiagram() {
-        //const mermaid = await import('mermaid');
-        let umlContent = '\nsequenceDiagram\n';
-        // umlContent += 'title: Exchanges between actors\n';
-        // umlContent += 'actor System\n';
-
-        // Object.keys(actors).forEach(actor => {
-        //     umlContent += `[${actor}]\n`;
-        // });
-
-        exchanges.forEach(exchange => {
-            // console.log(exchange);
-            let srcActor = getActorByIp(exchange.src_ipn);
-            let dstActor = getActorByIp(exchange.dst_ipn);
-            if (srcActor && dstActor) {
-                umlContent += `  ${srcActor}->>${dstActor}: Message\n`;
-            }
-        });
-
-        
-        const tempMermaidFile = 'temp_mermaid.mmd';
-        fs.writeFileSync(tempMermaidFile, umlContent);
+}
 
 
-        exec(`mmdc -i ${tempMermaidFile} -o mermaid_diagram.svg`, (err, stdout, stderr) => {
-            if (err) {
-                console.error(`Erreur lors de la génération du diagramme: ${stderr}`);
-                return;
-            }
-            console.log('UML sequence diagram generated: mermaid_diagram.svg');
-            fs.unlinkSync(tempMermaidFile); // Supprimer le fichier temporaire
-        });
-        
-        // mermaid.mermaidAPI.render('mermaidSvg', mermaidSource, (svg) => {
-        //     fs.writeFileSync('mermaid_diagram.svg', svg);
-        // });
 
-        // const diagram = Diagram.parse(input);
-        // const svg = diagram.drawSVG();
+async function generateUmlDiagram(fn, requestResponseExchanges, messageCb, cb) {
+    let umlContent = '\nsequenceDiagram\n';
 
-        // fs.writeFileSync('sequence_diagram.svg', svg);
+    messageCb = messageCb || (_ => {});
 
-        // const svg = nomnoml.renderSvg(umlContent);
-        // fs.writeFileSync('diagram.svg', svg);
-        console.log('UML diagram generated: diagram.svg');
-    }
+    requestResponseExchanges.forEach(requestResponseExchange => {
 
-    function getActorByIp(ip) {
-        let actorName = Object.keys(actors).find(actor => actors[actor] === ip)
-        return actorName || 'vLEI Server';
-        // return  || ip;
-    }
-});
+        let exchanges = requestResponseExchange.exchanges;
 
+        let request = exchanges[0];
+        let response = exchanges[1];
+
+        let srcActor = getActorByIp(request.src_ipn);
+        let dstActor = getActorByIp(request.dst_ipn);
+        if (srcActor && dstActor) {
+            umlContent += `  ${srcActor}->>${dstActor}: ${messageCb(request)}\n`;
+        }
+
+        srcActor = getActorByIp(response.src_ipn);
+        dstActor = getActorByIp(response.dst_ipn);
+
+        if (srcActor && dstActor) {
+            umlContent += `  ${srcActor}-->>${dstActor}: ${messageCb(request)}\n`;
+        }
+    });
+    
+    const tempMermaidFile = fn + '.mmd';
+    fs.writeFileSync(tempMermaidFile, umlContent);
+
+    console.log('Generating UML diagram...');
+
+    exec(`mmdc -i ${tempMermaidFile} -o ${fn}.svg`, (err, stdout, stderr) => {
+        if (err) {
+            console.error(`Erreur lors de la génération du diagramme: ${stderr}`);
+            return;
+        }
+        console.log('UML sequence diagram generated: mermaid_diagram.svg');
+        fs.unlinkSync(tempMermaidFile); // Supprimer le fichier temporaire
+        if (cb) {
+            cb();
+        }
+    });        
+}
+
+
+function getActorByIp(ip) {
+    let actorName = Object.keys(actors).find(actor => actors[actor] === ip)
+    return actorName || 'vLEI Server';
+}
 
 function extractFileObjects(reportContent) {
     const dom = htmlparser2.parseDocument(reportContent);
-
-
-    // let getFileobjectsNodes(dom);
     return getFileobjectsNodes(dom);
-
-    console.log(dom)
-
-    process.exit(0);
-
 }
 
 function getFileobjectsNodes(node) {
 
     let dfxmlNode = node.children.find(child => child.name === 'dfxml');
-
-
     let configurationNodes = dfxmlNode.children.filter(child => child.name === 'configuration');
 
     let fileobjectNodes = [];
@@ -194,9 +294,7 @@ function getFileobjectsNodes(node) {
         configurationNode.children.filter(child => child.name === 'fileobject').forEach(fileobjectNode => {
             fileobjectNodes.push(fileobjectNode);
         });
-        // fileobjectNodes.push();
     });
-    // console.log(fileobjectNodes);
 
     let fileObjects = fileobjectNodes.map(node => {
 
@@ -207,35 +305,8 @@ function getFileobjectsNodes(node) {
 
         fObj.filename = node.children.find(child => child.name === 'filename').children[0].data;
         fObj.filesize = node.children.find(child => child.name === 'filesize').children[0].data;
-
-
-
-        // fObj.filesize = transformNode(node.children.find(child => child.name === 'filesize'));
-        // console.log (fObj);
-        // console.log (fObj.filename);
-        // process.exit(0);
         return fObj;
     });
 
-    // console.log (fileObjects[0]);
-    // process.exit(0);
     return fileObjects;
-}
-
-function transformNode(node) {
-    // console.log(node);
-    if (node.type === 'tag') {
-        const obj = {
-            tag: node.name,
-            attributes: node.attribs,
-            children: node.children.map(transformNode)
-        };
-        return obj;
-    } else if (node.type === 'text') {
-        return {
-            type: 'text',
-            content: node.data
-        };
-    }
-    return null;
 }
