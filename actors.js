@@ -19,20 +19,42 @@ loadActorsAndExchanges();
 let times = getStepDateTimes('Issuing credential', 'Credential issued');
 
 let issuingExchanges = requestResponseExchanges.filter(exchange => {
-    let actorNames = ['valais', 'witness_1'];
+    let actorNames = ['valais', 'witness_1', 'witness_2', 'witness_3'];
     return isBetween(times, exchange) && includesActors(actorNames, exchange);
 });
-console.log(times);
-console.log(requestResponseExchanges.length);
-console.log(issuingExchanges.length);
 
+let initialisingExchanges = requestResponseExchanges.filter(exchange => {
+    let actorNames = ['ben', 'witness_1', 'witness_2', 'witness_3'];
+    return isBetween(getStepDateTimes('Data cleaned up', 'Actors are ready'), exchange) &&
+         includesActors(actorNames, exchange);
+});
+
+let retrievingExchanges = requestResponseExchanges.filter(exchange => {
+    return isBetween(getStepDateTimes('Receiving credential', 'Credential received'), exchange);
+});
+
+let presentingExchanges = requestResponseExchanges.filter(exchange => {
+    return isBetween(getStepDateTimes('Presenting credential', 'Credential presented'), exchange);
+});
+
+
+
+let verifyingExchanges = requestResponseExchanges.filter(exchange => {
+    return isBetween(getStepDateTimes('Verifying credential', 'Valid credential b'), exchange);
+});
+
+
+generateUmlDiagram('initialize_diagram', initialisingExchanges, () => {});
 generateUmlDiagram('issue_diagram', issuingExchanges, () => {});
+generateUmlDiagram('retrieve_diagram', retrievingExchanges, () => {});
+generateUmlDiagram('present_diagram', presentingExchanges, () => {});
+generateUmlDiagram('verify_diagram', verifyingExchanges, () => {});
 
 // process.exit(0);
 
 
 
-// generateUmlDiagram('mermaid_diagram', requestResponseExchanges, () => {});
+// generateUmlDiagram('full_diagram', requestResponseExchanges, () => {});
 
 
 function getStepDateTimes(startString, endString) {
@@ -228,43 +250,109 @@ function loadActorsAndExchanges() {
 
 
 
-async function generateUmlDiagram(fn, requestResponseExchanges, messageCb, cb) {
+async function generateUmlDiagram(fn, requestResponseExchanges, cb) {
     let umlContent = '\nsequenceDiagram\n';
 
-    messageCb = messageCb || (_ => {});
+    // messageCb = messageCb || (_ => {});
+    let options = {
+        detailed: true
+    }
+
+    messageCb = (exchange) => {
+        let message = exchange.content.split('\n')[0];
+
+        if (message.includes('HTTP/1.1')) {
+            message = message.replace('HTTP/1.1', '').trim();
+        }
+
+        if (message.length > 30) {
+            message = message.substr(0, 50) + '...';
+        }
+
+        if (message == '204 No Content') {
+            return message;
+        }
+
+        message = `${exchange.srcport}:${exchange.dstport} - ${message}`
+
+        return message;
+    };
+
+
+    function splitTcpFlow(rawTcpFlow) {
+        const requestsAndResponses = rawTcpFlow.split(/(?=(GET|POST|PUT|DELETE|PATCH|HEAD|OPTIONS|TRACE|HTTP\/1\.1) )/gm);
+
+        // Combine le délimiteur avec la partie qui suit
+        const combined = [];
+        for (let i = 0; i < requestsAndResponses.length; i += 2) {
+            combined.push(requestsAndResponses[i] + (requestsAndResponses[i + 1] || ''));
+        }
+
+        // Afficher les requêtes et réponses séparées avec les délimiteurs
+        // console.log(combined);
+
+        return combined;
+    }
+
 
     requestResponseExchanges.forEach(requestResponseExchange => {
 
         let exchanges = requestResponseExchange.exchanges;
 
-        let request = exchanges[0];
-        let response = exchanges[1];
+        if (options.detailed) {
+            requests = splitTcpFlow(exchanges[0].content);
+            responses = splitTcpFlow(exchanges[1].content);
 
-        let srcActor = getActorByIp(request.src_ipn);
-        let dstActor = getActorByIp(request.dst_ipn);
-        if (srcActor && dstActor) {
-            umlContent += `  ${srcActor}->>${dstActor}: ${messageCb(request)}\n`;
+            for (let i = 0; i < requests.length; i++) {
+                let request = {...exchanges[0]};
+                request.content = requests[i];
+
+                let response = {...exchanges[1]};
+                response.content = responses[i];
+                
+                addUmlMessages(request, response);
+            }
+        } else {
+            let request = exchanges[0];
+            let response = exchanges[1];
+
+            addUmlMessages(request, response);
         }
 
-        srcActor = getActorByIp(response.src_ipn);
-        dstActor = getActorByIp(response.dst_ipn);
 
-        if (srcActor && dstActor) {
-            umlContent += `  ${srcActor}-->>${dstActor}: ${messageCb(request)}\n`;
+        function addUmlMessages(request, response) {
+
+            let srcActor = getActorByIp(request.src_ipn);
+            let dstActor = getActorByIp(request.dst_ipn);
+    
+            if (srcActor && dstActor) {
+                umlContent += `  ${srcActor}->>${dstActor}: ${messageCb(request)}\n`;
+            }
+    
+            let responseMessage = messageCb(response);
+            if (responseMessage == '204 No Content') {
+                return;
+            }
+            srcActor = getActorByIp(response.src_ipn);
+            dstActor = getActorByIp(response.dst_ipn);
+    
+            if (srcActor && dstActor) {
+                umlContent += `  ${srcActor}-->>${dstActor}: \n`;
+            }
         }
     });
     
-    const tempMermaidFile = fn + '.mmd';
+    const tempMermaidFile = 'output/' +fn + '.mmd';
     fs.writeFileSync(tempMermaidFile, umlContent);
 
     console.log('Generating UML diagram...');
 
-    exec(`mmdc -i ${tempMermaidFile} -o ${fn}.svg`, (err, stdout, stderr) => {
+    exec(`mmdc -i ${tempMermaidFile} -o output/${fn}.svg`, (err, stdout, stderr) => {
         if (err) {
             console.error(`Erreur lors de la génération du diagramme: ${stderr}`);
             return;
         }
-        console.log('UML sequence diagram generated: mermaid_diagram.svg');
+        console.log(`UML sequence diagram generated: ${fn}.svg`);
         fs.unlinkSync(tempMermaidFile); // Supprimer le fichier temporaire
         if (cb) {
             cb();
