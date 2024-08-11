@@ -1,8 +1,0 @@
-POST / HTTP/1.1
-Host: witness_2:5631
-Accept-Encoding: identity
-Content-Type: application/cesr+json
-Content-Length: 531
-Cesr-Attachment: -HABELQj3pLUOtqUqQ23dugDq6m0S8bDtlSCFi1c7YgNO2Xa-AABAAC1epAZRpuWrI7W8Sz7aWxjBe5CaZ9gXMT5UdXRTcGcYGWf1fDhCQQxRfCRw8lkDGmkOJ4R_Vsy_qkT-k8Z_hsF-LAl5AABAA-a-HABELQj3pLUOtqUqQ23dugDq6m0S8bDtlSCFi1c7YgNO2Xa-AABAADF4GnV7I9qOLnxoUDMknDxLVR1-lmstoxgG1kuaKaAAryydwgF9lvLot1Y_Zd5xJWN3t9CpM_J6O_ByqVHJz8G
-
-{"v":"KERI10JSON000213_","t":"exn","d":"EMpR9pqvZYo7-k6txK1kxnXuCBx0bkYb-XgUi19Xo_EE","dt":"2024-08-09T12:50:38.789491+00:00","r":"/fwd","q":{"pre":"EDNXuFAHVqxbFRdQpatx6WJz6jLYPiQoH8Fn5AA1UcVO","topic":"credential"},"a":{"v":"KERI10JSON000135_","t":"exn","d":"EJhPVLBpLSzmTQfbRu9IljwVbTTS7PhunjfHDV-lpFeg","dt":"2024-08-09T12:50:37.856732+00:00","r":"/credential/issue","a":{"i":"ELQj3pLUOtqUqQ23dugDq6m0S8bDtlSCFi1c7YgNO2Xa","s":"EEYMNgyQNHWrsO4m65Px84M93o2url6aUpTFqNdMZdKt","a":"EKOZXcO0Uf5gIodXVjyxjPNIcsP3aCoEtgy5hzMtefZw"}}}

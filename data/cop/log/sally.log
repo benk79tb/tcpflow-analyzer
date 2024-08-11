@@ -1,7 +1,0 @@
-aeid = 
-1.0.0
-Sally server listening on 9723
-looking for credential EKOZXcO0Uf5gIodXVjyxjPNIcsP3aCoEtgy5hzMtefZw
-Validated IdCard credential EKOZXcO0Uf5gIodXVjyxjPNIcsP3aCoEtgy5hzMtefZw from issuer ELQj3pLUOtqUqQ23dugDq6m0S8bDtlSCFi1c7YgNO2Xa
-credential EKOZXcO0Uf5gIodXVjyxjPNIcsP3aCoEtgy5hzMtefZw is of schema EEYMNgyQNHWrsO4m65Px84M93o2url6aUpTFqNdMZdKt from issuer ELQj3pLUOtqUqQ23dugDq6m0S8bDtlSCFi1c7YgNO2Xa
-Valid credential b'{"schema": "EEYMNgyQNHWrsO4m65Px84M93o2url6aUpTFqNdMZdKt", "issuer": "ELQj3pLUOtqUqQ23dugDq6m0S8bDtlSCFi1c7YgNO2Xa", "issueTimestamp": "2024-08-09T12:50:35.736442+00:00", "credential": "EKOZXcO0Uf5gIodXVjyxjPNIcsP3aCoEtgy5hzMtefZw", "recipient": "EDNXuFAHVqxbFRdQpatx6WJz6jLYPiQoH8Fn5AA1UcVO", "firstName": "Benjamin", "lastName": "Keller", "birthDate": 19790629, "height": 171, "sex": "M", "origin": "ZH", "authority": "Sion", "expiry": 20290629}'
