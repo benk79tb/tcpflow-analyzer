@@ -40,7 +40,13 @@ let presentingExchanges = requestResponseExchanges.filter(exchange => {
 
 
 let verifyingExchanges = requestResponseExchanges.filter(exchange => {
+    return isBetween(getStepDateTimes('Verifying credential', 'Experience done'), exchange);
     return isBetween(getStepDateTimes('Verifying credential', 'Valid credential b'), exchange);
+});
+
+
+let noactionExchanges = requestResponseExchanges.filter(exchange => {
+    return isBetween(getStepDateTimes('No actions started', 'No actions finished'), exchange);
 });
 
 
@@ -49,12 +55,13 @@ generateUmlDiagram('issue_diagram', issuingExchanges, () => {});
 generateUmlDiagram('retrieve_diagram', retrievingExchanges, () => {});
 generateUmlDiagram('present_diagram', presentingExchanges, () => {});
 generateUmlDiagram('verify_diagram', verifyingExchanges, () => {});
+generateUmlDiagram('noaction_diagram', noactionExchanges, () => {});
 
 // process.exit(0);
 
 
 
-// generateUmlDiagram('full_diagram', requestResponseExchanges, () => {});
+generateUmlDiagram('full_diagram', requestResponseExchanges, () => {});
 
 
 function getStepDateTimes(startString, endString) {
@@ -280,13 +287,26 @@ async function generateUmlDiagram(fn, requestResponseExchanges, cb) {
 
 
     function splitTcpFlow(rawTcpFlow) {
-        const requestsAndResponses = rawTcpFlow.split(/(?=(GET|POST|PUT|DELETE|PATCH|HEAD|OPTIONS|TRACE|HTTP\/1\.1) )/gm);
+        // const requestsAndResponses = rawTcpFlow.split(/(?=(GET|POST|PUT|DELETE|PATCH|HEAD|OPTIONS|TRACE|HTTP\/1\.1) )/gm);
 
+        const delimiter = rawTcpFlow.split(' ')[0];
+        const requestsAndResponses = rawTcpFlow.split(delimiter);
+        // console.log(requestsAndResponses);
+        // process.exit(0);
         // Combine le délimiteur avec la partie qui suit
         const combined = [];
-        for (let i = 0; i < requestsAndResponses.length; i += 2) {
-            combined.push(requestsAndResponses[i] + (requestsAndResponses[i + 1] || ''));
+        for (let i = 1; i < requestsAndResponses.length; i++) {
+            combined.push(delimiter + requestsAndResponses[i]);
         }
+
+        // if (combined.length > 2) {
+        //     console.log(combined.length);
+        //     console.log(combined);
+
+        //     // console.log(combined);
+        //     process.exit(0);
+        //         // combined.push('204 No Content');
+        // }
 
         // Afficher les requêtes et réponses séparées avec les délimiteurs
         // console.log(combined);
@@ -347,13 +367,13 @@ async function generateUmlDiagram(fn, requestResponseExchanges, cb) {
 
     console.log('Generating UML diagram...');
 
-    exec(`mmdc -i ${tempMermaidFile} -o output/${fn}.svg`, (err, stdout, stderr) => {
+    exec(`mmdc -i ${tempMermaidFile} -o output/${fn}.png`, (err, stdout, stderr) => {
         if (err) {
             console.error(`Erreur lors de la génération du diagramme: ${stderr}`);
             return;
         }
         console.log(`UML sequence diagram generated: ${fn}.svg`);
-        fs.unlinkSync(tempMermaidFile); // Supprimer le fichier temporaire
+        // fs.unlinkSync(tempMermaidFile); // Supprimer le fichier temporaire
         if (cb) {
             cb();
         }
