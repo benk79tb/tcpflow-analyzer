@@ -7,7 +7,7 @@ console.log('Hello World!');
 const dataFolder = './data';
 
 
-let actors = {};
+let actors = {'vLEIServer': '172.25.0.2'};
 let requestResponseExchanges = []
 let logContent = [];
 
@@ -24,13 +24,31 @@ let issuingExchanges = requestResponseExchanges.filter(exchange => {
 });
 
 let initialisingExchanges = requestResponseExchanges.filter(exchange => {
+    let actorNames = ['ben', 'witness_1', 'witness_2', 'witness_3', 'vLEIServer'];
+
+    let httpVerb = exchange.exchanges[0].content.split(' ')[0];
+    if (httpVerb !== 'GET') {
+        return false;
+    }
+    return isBetween(getStepDateTimes('Data cleaned up', 'Actors are ready'), exchange) &&
+         includesActors(actorNames, exchange);
+});
+
+let inceptingExchanges = requestResponseExchanges.filter(exchange => {
     let actorNames = ['ben', 'witness_1', 'witness_2', 'witness_3'];
+
+    let httpVerb = exchange.exchanges[0].content.split(' ')[0];
+    if (httpVerb !== 'POST') {
+        return false;
+    }
     return isBetween(getStepDateTimes('Data cleaned up', 'Actors are ready'), exchange) &&
          includesActors(actorNames, exchange);
 });
 
 let retrievingExchanges = requestResponseExchanges.filter(exchange => {
-    return isBetween(getStepDateTimes('Receiving credential', 'Credential received'), exchange);
+    let actorNames = ['ben', 'witness_1', 'witness_2', 'witness_3', 'vLEIServer'];
+    return isBetween(getStepDateTimes('Receiving credential', 'Credential received'), exchange) &&
+    includesActors(actorNames, exchange);
 });
 
 let presentingExchanges = requestResponseExchanges.filter(exchange => {
@@ -50,6 +68,7 @@ let noactionExchanges = requestResponseExchanges.filter(exchange => {
 });
 
 
+generateUmlDiagram('incept_diagram', inceptingExchanges, () => {});
 generateUmlDiagram('initialize_diagram', initialisingExchanges, () => {});
 generateUmlDiagram('issue_diagram', issuingExchanges, () => {});
 generateUmlDiagram('retrieve_diagram', retrievingExchanges, () => {});
@@ -61,7 +80,7 @@ generateUmlDiagram('noaction_diagram', noactionExchanges, () => {});
 
 
 
-generateUmlDiagram('full_diagram', requestResponseExchanges, () => {});
+// generateUmlDiagram('full_diagram', requestResponseExchanges, () => {});
 
 
 function getStepDateTimes(startString, endString) {
@@ -383,7 +402,7 @@ async function generateUmlDiagram(fn, requestResponseExchanges, cb) {
 
 function getActorByIp(ip) {
     let actorName = Object.keys(actors).find(actor => actors[actor] === ip)
-    return actorName || 'vLEI Server';
+    return actorName || 'vLEIServer';
 }
 
 function extractFileObjects(reportContent) {
